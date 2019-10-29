@@ -1,10 +1,10 @@
-package elis.com.leaf_store;
+package br.ufsm.leafstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LeafStoreApplicationTests {
+class WebServiceLeafStoreApplicationTests {
 
 	@Test
 	void contextLoads() {

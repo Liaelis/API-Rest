@@ -8,11 +8,11 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>elis.com</groupId>
-	<artifactId>leaf_store</artifactId>
+	<groupId>br.lufsm</groupId>
+	<artifactId>web-service_LeafStore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>leaf_store</name>
-	<description>project for Spring Boot</description>
+	<name>web-service_LeafStore</name>
+	<description>leaf store</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -26,6 +26,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
