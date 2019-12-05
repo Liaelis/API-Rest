@@ -1,9 +1,12 @@
 package br.ufsm.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -17,12 +20,28 @@ public class Usuario {
 	
 	@NotBlank
 	private String email;
+
+	@NotBlank
+	private String endereco;
 	
 	@NotBlank
 	private String cnpj;
 	
 	@NotBlank
 	private String senha;
+
+	@OneToMany(mappedBy="usuario")
+	private List<Planta> plantas;
+	
+	
+	
+	public List<Planta> getPlantas() {
+		return plantas;
+	}
+
+	public void setPlantas(List<Planta> plantas) {
+		this.plantas = plantas;
+	}
 
 	public Integer getId() {
 		return id;
@@ -32,6 +51,13 @@ public class Usuario {
 		this.id = id;
 	}
 
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getSenha() {
 		return senha;
