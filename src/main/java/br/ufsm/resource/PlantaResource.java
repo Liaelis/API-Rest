@@ -29,7 +29,11 @@ public class PlantaResource {
 	@PostMapping("/save")
 	public Usuario cadastraPlanta(@RequestBody @Valid Planta  planta) {
 		Integer id = planta.getUsuario().getId();
-		Usuario user = usuarioRepository.findByUsuarioId(id);
+		Optional<Usuario> upp = usuarioRepository.findById(id);
+		if(upp.isPresent()) {
+			System.out.println("não achou o carinha");
+		}
+		Usuario user = upp.get();
 		planta.setUsuario(user);
 		Planta plan = plantaRespository.save(planta);
 		return user;
