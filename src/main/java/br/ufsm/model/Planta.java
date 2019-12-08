@@ -16,13 +16,13 @@ public class Planta {
     private Integer id;
 
     @NotBlank
-    private String nome_popular;
+    private String nomePopular;
 
     @NotBlank
-    private String nome_cientifico;
+    private String nomeCientifico;
 
     @NotBlank
-    private Double valor;
+    private String valor;
     
     @ManyToOne
     @JoinColumn(name="idusuario")
@@ -45,27 +45,27 @@ public class Planta {
         this.id = id;
     }
 
-    public String getNome_popular() {
-        return nome_popular;
+    public String getNomePopular() {
+        return nomePopular;
     }
 
-    public void setNome_popular(String nome_popular) {
-        this.nome_popular = nome_popular;
+    public void setNomePopular(String nomePopular) {
+        this.nomePopular = nomePopular;
     }
 
-    public String getNome_cientifico() {
-        return nome_cientifico;
+    public String getNomeCientifico() {
+        return nomeCientifico;
     }
 
-    public void setNome_cientifico(String nome_cientifico) {
-        this.nome_cientifico = nome_cientifico;
+    public void setNomeCientifico(String nomeCientifico) {
+        this.nomeCientifico = nomeCientifico;
     }
 
-    public Double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 }

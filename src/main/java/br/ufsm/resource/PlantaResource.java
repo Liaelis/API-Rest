@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufsm.model.Planta;
+import br.ufsm.model.Plantadto;
 import br.ufsm.model.Usuario;
 import br.ufsm.repository.PlantaRepository;
 import br.ufsm.repository.UsuarioRepository;
@@ -26,23 +27,30 @@ public class PlantaResource {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
-	@PostMapping("/save")
-	public Usuario cadastraPlanta(@RequestBody @Valid Planta  planta) {
-		Integer id = planta.getUsuario().getId();
-		Optional<Usuario> upp = usuarioRepository.findById(id);
-		if(upp.isPresent()) {
-			System.out.println("não achou o carinha");
-		}
-		Usuario user = upp.get();
-		planta.setUsuario(user);
-		Planta plan = plantaRespository.save(planta);
-		return user;
-	}
-	
 	@GetMapping(produces="application/json")
 	public @ResponseBody Iterable<Planta> listaPlanta( ) {
 		Iterable<Planta> listaPlanta = plantaRespository.findAll();
 		return listaPlanta;
 	}
+	@PostMapping("/savep")
+	public Usuario cadastraPlanta(@RequestBody @Valid Plantadto  plantadto) {
+		Integer id = plantadto.getIdUser();
+		System.out.println(plantadto.getNomePopular());
+		System.out.println(id);
+		Optional<Usuario> upp = usuarioRepository.findById(id);
+		Usuario user = upp.get();	
+		Planta planta = new Planta();
+		planta.setUsuario(user);
+		System.out.println("Usuario que achou"+user.getNome());
+		planta.setNomeCientifico(plantadto.getNomeCientifico());
+		planta.setNomePopular(plantadto.getNomePopular());
+		planta.setValor(plantadto.getValor());
+		System.out.println("plantaaaa");
+		System.out.println(planta.getNomePopular());
+		plantaRespository.save(planta);
+		return user;
+	}
+	
+
 
 }

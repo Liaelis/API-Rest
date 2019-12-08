@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Usuario {
 	
@@ -21,15 +23,14 @@ public class Usuario {
 	@NotBlank
 	private String email;
 
-	@NotBlank
-	private String endereco;
 	
 	@NotBlank
 	private String cnpj;
 	
 	@NotBlank
 	private String senha;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="usuario")
 	private List<Planta> plantas;
 	
@@ -49,14 +50,6 @@ public class Usuario {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getSenha() {
