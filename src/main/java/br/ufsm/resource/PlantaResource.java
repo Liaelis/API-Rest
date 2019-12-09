@@ -1,5 +1,6 @@
 package br.ufsm.resource;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -50,7 +51,18 @@ public class PlantaResource {
 		plantaRespository.save(planta);
 		return user;
 	}
-	
+	@PostMapping("/plantauser")
+	public List<Planta> todasPlantasDoUsuario(@RequestBody @Valid Usuario usuario) {
+ 		List<Planta> plant = plantaRespository.findPlantaByUsuarioId(usuario.getId());
+		if(plant.isEmpty()) {
+			System.out.println("ta vazio aqui não achou");
+			return null;
+		}else {
+			return plant;
+		}
+		
+	}
 
+	
 
 }
